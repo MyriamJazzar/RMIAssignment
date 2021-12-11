@@ -14,4 +14,50 @@ public class Server extends UnicastRemoteObject implements MyInterface {
 
         Naming.rebind("rmi://127.0.0.1:1250/server", server);
     }
+    
+    @override
+    public String Reverse(String ch){
+        StringBuilder strb = new StringBuilder(ch);
+		ch = strb.reverse().toString();
+        return ch;
+    }
+    
+    @override 
+    public char MinChar(String ch){
+        char c = ch.charAt(0);
+        for(int i = 1; i < ch.length(); i++)
+        {
+            if(ch.charAt(i)< c)
+            {
+                c = ch.charAt(i);
+            }
+        }
+        return c;
+    }
+    
+    @override 
+    public String CaseChanger(String ch){
+        int strLen;
+        if (ch == null || (strLen = ch.length()) == 0) {
+            return ch;
+        }
+        StringBuffer buffer = new StringBuffer(strLen);
+
+        char c = 0;
+        for (int i = 0; i < strLen; i++) {
+            c = ch.charAt(i);
+            if (Character.isUpperCase(c)) {
+                c = Character.toLowerCase(c);
+            } else if (Character.isTitleCase(c)) {
+                c = Character.toLowerCase(c);
+            } else if (Character.isLowerCase(c)) {
+                c = Character.toUpperCase(c);
+            }
+            buffer.append(c);
+        }
+        return buffer.toString();
+    }
+   
+    }
+    
 }
