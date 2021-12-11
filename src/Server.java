@@ -37,20 +37,17 @@ public class Server extends UnicastRemoteObject implements MyInterface {
     
     @override 
     public String CaseChanger(String ch){
-        int strLen;
-        if (ch == null || (strLen = ch.length()) == 0) {
+        int chLen = ch.length();
+        if (ch == null || chLen == 0) {
             return ch;
         }
-        StringBuffer buffer = new StringBuffer(strLen);
+        StringBuffer buffer = new StringBuffer(chLen);
 
-        char c = 0;
-        for (int i = 0; i < strLen; i++) {
-            c = ch.charAt(i);
+        for (int i = 0; i < chLen; i++) {
+            char c = ch.charAt(i);
             if (Character.isUpperCase(c)) {
                 c = Character.toLowerCase(c);
-            } else if (Character.isTitleCase(c)) {
-                c = Character.toLowerCase(c);
-            } else if (Character.isLowerCase(c)) {
+            }else if (Character.isLowerCase(c)) {
                 c = Character.toUpperCase(c);
             }
             buffer.append(c);
